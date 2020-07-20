@@ -1,13 +1,8 @@
-const { Client } = require('pg')
-const client = new Client({
-    user: "awnsfvaj",
-    password: "WMfT156PXxTh8Dli9Odm2wwuHlmIdsl3",
-    host: "ruby.db.elephantsql.com",
-    port: 5432,
-    database: "awnsfvaj"
-})
+const express = require("express");
+const app = express();
 
-client.connect()
-.then(() => console.log("Successful Connection"))
-.catch(e => console.log)
-.finally(() => client.end())
+const pool = require("../Artifacts/candidate_interviews_assignments_postresql_create_table.ddl");
+
+app.listen(8000, () => {
+    console.log("Server is listening at Port: 8000");
+});
