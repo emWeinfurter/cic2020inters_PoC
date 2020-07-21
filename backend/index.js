@@ -2,27 +2,25 @@ const express = require("express");
 const app = express();
 const pool = require("./database");
 
-//const candidate = require("../Artifacts/sample_candidate_info.json");
-//const breakout_room = require("../Artifacts/sample_collection_breakout_room_info.json");
+const candidate = require("../Artifacts/sample_candidate_info.json");
+const breakout_room = require("../Artifacts/sample_collection_breakout_room_info.json");
 
 app.use(express.json());
 
+
 //---ROUTES for CRUD operations---//
-//Create
-app.post("/assignments", async(req, res) => {
-    try {
-        const { candidate_info } = req.body;
-        const { breakout_room_info } = req.body;
-
-        const newInfo = await pool.query("INSERT INTO candidate_interviews_assignments (candidate_info, breakout_room_info) VALUES($1, $2) RETURNING *", [candidate_info], [breakout_room_info]);
-
-        //const newInfo = await pool.query("INSERT INTO candidate_interviews_assignments (candidate_info, breakout_room_info) VALUES($1, $2) RETURNING *", [candidate], [breakout_room]);
-
-        res.json(JSON.stringify(newInfo));
-    } catch (err) {
-        console.error(err.message);
-    }
+//Create ************Errors Here**************
+app.post("/assignments", res => {
+        pool.query('INSERT INTO candidate_interviews_assignments (candidate_info, breakout_room_info) VALUES(${1}, ${2})', candidate, breakout_room, (error, result) => {
+            console.log("inside the query");
+            if (error) {
+                res.statusCode(404).json({ message: 'error' });
+                throw error;
+            }
+            res.statusCode(200).send(result.rows);
+        });
 });
+//*****************Errors Here ***********/
 
 //Read
 app.get("/assignments", async(req, res) => {
@@ -41,7 +39,7 @@ app.get("/assignments", async(req, res) => {
 app.delete("/assignments/:id", async(req, res) => {
     try {
         const { id } = req.params;
-        const deletTodo = await pool.query("DELETE FROM candidate_interviews_assignments WHERE id =$1", [id]);
+        const deleteTodo = await pool.query("DELETE FROM candidate_interviews_assignments WHERE id = $1", [id]);
     } catch (err) {
         console.error(err.message);
     }
