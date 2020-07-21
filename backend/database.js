@@ -1,6 +1,6 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 
-const pool = new Pool({
+const client = new Client({
     user: "awnsfvaj",
     password: "WMfT156PXxTh8Dli9Odm2wwuHlmIdsl3",
     host: "ruby.db.elephantsql.com",
@@ -8,4 +8,4 @@ const pool = new Pool({
     database: "awnsfvaj"
 });
 
-module.exports = pool;
+module.exports = client;
