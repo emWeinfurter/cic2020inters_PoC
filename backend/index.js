@@ -24,10 +24,10 @@ app.post("/assignments", async(req, res) => {
     const values = [candidate, breakout_room, create_w3id];
 
     try {
-        const addValues = await client.query(queryString, values)
-        res.json(addValues.rows[0])
+        const addValues = await client.query(queryString, values);
+        res.json(addValues.rows[0]);
       } catch (err) {
-        console.log(err.stack)
+        console.log(err.stack);
       }
 });
 
@@ -44,12 +44,26 @@ app.get("/assignments", async(req, res) => {
 });
 
 //Update
+app.put("/assignments/:id", async(req, res) => {
+    const { id } = req.params;
+    const { modify_w3id } = req.body;
+
+    const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1 WHERE id = $2';
+    const values = [modify_w3id, id];
+    try {
+        await client.query(queryString, values);
+        res.json("Changes added");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 //Delete
 app.delete("/assignments/:id", async(req, res) => {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
-        const deleteTodo = await client.query("DELETE FROM candidate_interviews_assignments WHERE id = $1", [id]);
+        await client.query("DELETE FROM candidate_interviews_assignments WHERE id = $1", [id]);
+        res.json("Row deleted");
     } catch (err) {
         console.error(err.message);
     }
