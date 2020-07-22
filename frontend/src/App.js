@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
+
+//import components
+import AddCandidate from "./components/AddCandidate";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="container">
+      <h1 className="text-center mt-5">Queue Manager</h1>
+      <form className="center">
+        <button type="button mt-5" className="btn btn-primary">
+          Add Candidate
+        </button>
+      </form>
+      </div>
+      <AddCandidate />
+    </Fragment>
   );
 }
 

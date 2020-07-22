@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const client = require("./database");
 
 client.connect(err => {
@@ -13,6 +14,7 @@ client.connect(err => {
 const candidate = JSON.stringify(require("../Artifacts/sample_candidate_info.json"));
 const breakout_room = JSON.stringify(require("../Artifacts/sample_collection_breakout_room_info.json"));
 
+app.use(cors());
 app.use(express.json());
 
 //---ROUTES for CRUD operations---//
