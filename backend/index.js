@@ -16,6 +16,9 @@ client.connect(err => {
     }
 });
 
+//Generates a new Date for put requests
+var date = new Date();
+
 //---Test CRUD op in backend---//
 //const candidate = JSON.stringify(require("../Artifacts/sample_candidate_info.json"));
 //const breakout_room = JSON.stringify(require("../Artifacts/sample_collection_breakout_room_info.json"));
@@ -48,15 +51,33 @@ app.get("/assignments", async(req, res) => {
 });
 
 //Update
-app.put("/assignments/:id", async(req, res) => {
+//to modify w3id
+app.put("/assignments/w3id/:id", async(req, res) => {
+    var date = new Date();
     const { id } = req.params;
-    const { modify_w3id } = req.body;
+    const { modify_w3id, modified_dt } = req.body;
 
-    const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1 WHERE id = $2';
-    const values = [modify_w3id, id];
+    const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1, modified_dt = $2 WHERE id = $3';
+    const values = [modify_w3id, date, id];
     try {
         await client.query(queryString, values);
-        res.json("Changes added");
+        res.json("Modfied w3id added");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+//to change candidate status
+app.put("/assignments/status/:id", async(req, res) => {
+    var date = new Date();
+    const { id } = req.params;
+    const { interview_status_code } = req.body;
+
+    const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1, modified_dt = $2 WHERE id = $3';
+    const values = [interview_status_code, date, id];
+    try {
+        await client.query(queryString, values);
+        res.json("Changed status");
     } catch (err) {
         console.error(err.message);
     }

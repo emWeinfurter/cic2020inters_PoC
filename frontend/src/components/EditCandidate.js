@@ -5,13 +5,15 @@ const EditCandidate = ({ e }) => {
 
     const putModify = async(el) => {
         el.preventDefault();
+        var date = new Date();
         try {
-            const body = { modify_w3id };
-            await fetch(`http://localhost:8000/assignments/${e.id}`, {
+            const body = { modify_w3id, date };
+            await fetch(`http://localhost:8000/assignments/w3id/${e.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
+            console.log(date);
             window.location = "/"; 
         } catch (error) {
             console.error(error.message);
