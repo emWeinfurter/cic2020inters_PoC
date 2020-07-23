@@ -34,7 +34,7 @@ const AddCandidate = () => {
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {displayBreakout_room.map(e => (
-                            <button class="dropdown-item" type="button">{e.name}</button>
+                            <button className="dropdown-item" type="button">{e.name}</button>
                         ))}
                 </div>
             </div>

@@ -55,7 +55,7 @@ app.get("/assignments", async(req, res) => {
 app.put("/assignments/w3id/:id", async(req, res) => {
     var date = new Date();
     const { id } = req.params;
-    const { modify_w3id, modified_dt } = req.body;
+    const { modify_w3id } = req.body;
 
     const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1, modified_dt = $2 WHERE id = $3';
     const values = [modify_w3id, date, id];

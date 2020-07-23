@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditCandidate from "./EditCandidate";
+import CandidateStatus from "./CandidateStatus";
 
 const EditQueue = () => {
     const [ queue, setQueue ] = useState([]);
@@ -43,8 +44,10 @@ const EditQueue = () => {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scopr="col">Edit Info</th>
+                        <th scopr="col">JRSS</th>
                         <th scope="col">Resume</th>
+                        <th scope="col">Status</th>
+                        <th scopr="col">Edit w3id</th>
                         <th scopr="col">Delete</th>
                     </tr>
                 </thead>
@@ -53,8 +56,12 @@ const EditQueue = () => {
                         <tr key={e.id}>
                             <th>{e.id}</th>
                             <td>{e.candidate_info.name}</td>
+                            <td>{e.candidate_info.jrss}</td>
+                            <td>{e.candidate_info.links.map(link => (
+                                <a href={link.url} className="btn btn-primary form-control mt-1" role="button">{link.name}</a>
+                            ))}</td>
+                            <td><CandidateStatus e={e}/></td>
                             <td><EditCandidate e={e}/></td>
-                            <td><a href={e.candidate_info.links[1].url} className="btn btn-primary form-control" role="button">Resume</a></td>
                             <td><button className="btn btn-danger btn-block" onClick={() => deleteCandidate(e.id)}>Delete</button></td>
                         </tr>
                     ))}

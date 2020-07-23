@@ -13,7 +13,6 @@ const EditCandidate = ({ e }) => {
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-            console.log(date);
             window.location = "/"; 
         } catch (error) {
             console.error(error.message);
