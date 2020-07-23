@@ -11,12 +11,12 @@ const AddCandidate = () => {
         e.preventDefault();
         try {
             const body = { create_w3id, candidate_info, breakout_room_info };
-            const response = await fetch("http://localhost:8000/assignments", {
+            await fetch("http://localhost:8000/assignments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-            console.log(response);
+            window.location = "/";
         } catch (err) {
             console.error(err.message);
         }
