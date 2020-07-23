@@ -4,6 +4,9 @@ import React, { Fragment } from "react";
 const candidate_info = JSON.stringify(require("../SampleArtifacts/sample_candidate_info.json"));
 const breakout_room_info = JSON.stringify(require("../SampleArtifacts/sample_collection_breakout_room_info.json"));
 
+const displayCandidate = JSON.parse(candidate_info);
+const displayBreakout_room = JSON.parse(breakout_room_info);
+
 const AddCandidate = () => {
     const create_w3id = "Jordan.Myles@ibm.com"
 
@@ -24,10 +27,22 @@ const AddCandidate = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center">Add Candidate</h1>
-            <form className="d-flex" onSubmit={onSubmitForm}>
+            <div className="container">
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Breakout Room
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {displayBreakout_room.map(e => (
+                            <a class="dropdown-item" href="#">{e.name}</a>
+                        ))}
+                </div>
+            </div>
+            <form className="d-flex mt-3" onSubmit={onSubmitForm}>
                 <button type="button mt-5" className="btn btn-primary">Add</button>
             </form>
+            <p>{displayCandidate.name}, {displayCandidate.jrss}</p>
+            </div>
         </Fragment>
     );
 };

@@ -35,7 +35,9 @@ const EditQueue = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5">Edit Queue</h1>
+            <div className="container mt-5" />
+            <h3>Breakout Room 1</h3>
+            <h5>Number of Candidates: {queue.length}</h5>
             <table className="table">
                 <thead>
                     <tr>
