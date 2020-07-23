@@ -3,6 +3,11 @@ const app = express();
 const cors = require("cors");
 const client = require("./database");
 
+//---app express/cors---//
+app.use(cors());
+app.use(express.json());
+
+//---Connection to DB---//
 client.connect(err => {
     if (err) {
       console.error('connection error', err.stack)
@@ -11,19 +16,17 @@ client.connect(err => {
     }
 });
 
-const candidate = JSON.stringify(require("../Artifacts/sample_candidate_info.json"));
-const breakout_room = JSON.stringify(require("../Artifacts/sample_collection_breakout_room_info.json"));
-
-app.use(cors());
-app.use(express.json());
+//---Test CRUD op in backend---//
+//const candidate = JSON.stringify(require("../Artifacts/sample_candidate_info.json"));
+//const breakout_room = JSON.stringify(require("../Artifacts/sample_collection_breakout_room_info.json"));
 
 //---ROUTES for CRUD operations---//
 //Create
 app.post("/assignments", async(req, res) => {
-    const { create_w3id } = req.body;
+    const { create_w3id, candidate_info, breakout_room_info } = req.body;
 
     const queryString = 'INSERT INTO candidate_interviews_assignments(candidate_info, breakout_room_info, create_w3id) VALUES($1, $2, $3) RETURNING *';
-    const values = [candidate, breakout_room, create_w3id];
+    const values = [candidate_info, breakout_room_info, create_w3id];
 
     try {
         const addValues = await client.query(queryString, values);
@@ -32,7 +35,6 @@ app.post("/assignments", async(req, res) => {
         console.log(err.stack);
       }
 });
-
 
 //Read
 app.get("/assignments", async(req, res) => {
