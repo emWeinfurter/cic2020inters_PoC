@@ -3,19 +3,20 @@ import './App.css';
 
 //import components
 import AddCandidate from "./components/AddCandidate";
+import EditQueue from "./components/EditQueue";
 
 function App() {
   return (
     <Fragment>
       <div className="container">
       <h1 className="text-center mt-5">Queue Manager</h1>
-      <form className="center">
-        <button type="button mt-5" className="btn btn-primary">
-          Add Candidate
-        </button>
-      </form>
       </div>
-      <AddCandidate />
+      <div className="container">
+        <AddCandidate />
+      </div>
+      <div className="container">
+        <EditQueue />
+      </div>
     </Fragment>
   );
 }
