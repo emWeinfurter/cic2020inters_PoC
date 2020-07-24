@@ -73,7 +73,7 @@ app.put("/assignments/status/:id", async(req, res) => {
     const { id } = req.params;
     const { interview_status_code } = req.body;
 
-    const queryString = 'UPDATE candidate_interviews_assignments SET modify_w3id = $1, modified_dt = $2 WHERE id = $3';
+    const queryString = 'UPDATE candidate_interviews_assignments SET interview_status_code = $1, modified_dt = $2 WHERE id = $3';
     const values = [interview_status_code, date, id];
     try {
         await client.query(queryString, values);
