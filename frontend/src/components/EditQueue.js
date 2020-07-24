@@ -46,7 +46,6 @@ const EditQueue = () => {
                         <th scopr="col">JRSS</th>
                         <th scope="col">Resume</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Current Status</th>
                         <th scopr="col">Delete</th>
                     </tr>
                 </thead>
@@ -60,7 +59,6 @@ const EditQueue = () => {
                                 <a href={link.url} className="btn btn-primary form-control mt-1" role="button">{link.name}</a>
                             ))}</td>
                             <td><CandidateStatus e={e}/></td>
-                            <td>{e.interview_status_code}</td>
                             <td><button className="btn btn-danger btn-block" onClick={() => deleteCandidate(e.id)}>Delete</button></td>
                         </tr>
                     ))}

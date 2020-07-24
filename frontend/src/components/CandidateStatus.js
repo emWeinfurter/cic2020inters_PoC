@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
 const CandidateStatus = ({ e }) => {
-    const [ status, set_status ] = useState(e.interview_status_code);
+    const [ status ] = useState(e.interview_status_code);
 
     const modStatus = async(el, str) => {
         const interview_status_code = str;
@@ -23,7 +23,7 @@ const CandidateStatus = ({ e }) => {
         <Fragment>
             <div className="dropdown" id={`id${e.id}`}>
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value={status}>
-                    {set_status}
+                    {`${e.interview_status_code}`}  
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" id={`id${e.id}`}>
                     <button className="dropdown-item" type="button" onClick={el => modStatus(el, "P")}>Pending</button>
