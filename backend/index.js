@@ -17,7 +17,7 @@ client.connect(err => {
 });
 
 //Generates a new Date for put requests
-var date = new Date();
+//var date = new Date();
 
 //---Test CRUD op in backend---//
 //const candidate = JSON.stringify(require("../Artifacts/sample_candidate_info.json"));
