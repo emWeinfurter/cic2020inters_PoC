@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
+//---Modifies w3id of candidate, removed due to slowed down browser---//
 const EditCandidate = ({ e }) => {
     const [ modify_w3id, set_w3id ] = useState(e.create_w3id);
 
