@@ -50,6 +50,28 @@ app.get("/assignments", async(req, res) => {
     }
 });
 
+//get candidate info only
+app.get("/candidates", async(req, res) => {
+    try {
+        const candidate = await client.query("SELECT candidate_info FROM candidate_interviews_assignments");
+
+        res.json(candidate.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+//get breakout room info only
+app.get("/breakout-room", async(req, res) => {
+    try {
+        const breakout_room = await client.query("SELECT breakout_room_info FROM candidate_interviews_assignments");
+
+        res.json(breakout_room.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 //***Update
 //to modify w3id
 app.put("/assignments/w3id/:id", async(req, res) => {
