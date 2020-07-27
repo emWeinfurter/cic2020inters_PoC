@@ -8,12 +8,13 @@ const displayCandidate = JSON.parse(candidate_info);
 const displayBreakout_room = JSON.parse(breakout_room_info);
 
 const AddCandidate = () => {
-    const create_w3id = "Jordan.Myles@ibm.com"
+    const create_w3id = "FName.Lname@ibm.com";
+    const interview_status_code = "P";
 
     const onSubmitForm = async e => {
         e.preventDefault();
         try {
-            const body = { create_w3id, candidate_info, breakout_room_info };
+            const body = { create_w3id, interview_status_code, candidate_info, breakout_room_info };
             await fetch("http://localhost:8000/assignments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},

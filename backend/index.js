@@ -24,12 +24,12 @@ client.connect(err => {
 //const breakout_room = JSON.stringify(require("../Artifacts/sample_collection_breakout_room_info.json"));
 
 //---ROUTES for CRUD operations---//
-//Create
+//***Create
 app.post("/assignments", async(req, res) => {
-    const { create_w3id, candidate_info, breakout_room_info } = req.body;
+    const { create_w3id, interview_status_code, candidate_info, breakout_room_info } = req.body;
 
-    const queryString = 'INSERT INTO candidate_interviews_assignments(candidate_info, breakout_room_info, create_w3id) VALUES($1, $2, $3) RETURNING *';
-    const values = [candidate_info, breakout_room_info, create_w3id];
+    const queryString = 'INSERT INTO candidate_interviews_assignments(candidate_info, breakout_room_info, create_w3id, interview_status_code) VALUES($1, $2, $3, $4) RETURNING *';
+    const values = [candidate_info, breakout_room_info, create_w3id, interview_status_code];
 
     try {
         const addValues = await client.query(queryString, values);
@@ -39,7 +39,7 @@ app.post("/assignments", async(req, res) => {
       }
 });
 
-//Read
+//***Read
 app.get("/assignments", async(req, res) => {
     try {
         const allInfo = await client.query("SELECT * FROM candidate_interviews_assignments");
@@ -50,7 +50,7 @@ app.get("/assignments", async(req, res) => {
     }
 });
 
-//Update
+//***Update
 //to modify w3id
 app.put("/assignments/w3id/:id", async(req, res) => {
     var date = new Date();
@@ -83,7 +83,7 @@ app.put("/assignments/status/:id", async(req, res) => {
     }
 })
 
-//Delete
+//***Delete
 app.delete("/assignments/:id", async(req, res) => {
     const { id } = req.params;
     try {

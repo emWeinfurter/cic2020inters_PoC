@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Jordan Myles",
+        "jrss": "Java Full Stack",
+        "tags": [
+            "Oracle",
+            "Node",
+            "Sprint Boot"
+        ],
+        "notes": "5 years of experience",
+        "links": [{
+                "name": "Github",
+                "url": "github.com/jomyles"
+            },
+            {
+                "name": "Resume",
+                "url": "https://ibm.box.com/s/1jordeuafclarcx38myv0ken3jiry"
+            }
+        ]
+    },
+    {
+        "name": "Elise Weinfurter",
+        "jrss": "PERN",
+        "tags": [
+            "Node",
+            "React",
+            "Unity"
+        ],
+        "notes": "IBM internship",
+        "links": [{
+                "name": "Github",
+                "url": "https://github.ibm.com/Elise-Weinfurter"
+            },
+            {
+                "name": "Resume",
+                "url": "https://ibm.box.com/s/1jordeuafclarcx38myv0ken3jiry"
+            }
+        ]
+    },
+    {
+        "name": "Anna Capedeville",
+        "jrss": "Arduino",
+        "tags": [
+            "MATLAB",
+            "Python",
+            "Java"
+        ],
+        "notes": "Electrical Engineer Major",
+        "links": [{
+                "name": "Github",
+                "url": "github.com"
+            },
+            {
+                "name": "Resume",
+                "url": "https://ibm.box.com/s/1jordeuafclarcx38myv0ken3jiry"
+            }
+        ]
+    },
+    {
+        "name": "Luke Blackwell",
+        "jrss": "Vidya Games",
+        "tags": [
+            "Python",
+            "Java",
+            "C++"
+        ],
+        "notes": "subpar gamer",
+        "links": [{
+                "name": "Github",
+                "url": "github.com"
+            },
+            {
+                "name": "Resume",
+                "url": "https://ibm.box.com/s/1jordeuafclarcx38myv0ken3jiry"
+            }
+        ]
+    }
+]

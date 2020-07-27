@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import CandidateStatus from "./CandidateStatus";
+//import EditCandidate from "./EditCandidate";
 
 const EditQueue = () => {
     const [ queue, setQueue ] = useState([]);
