@@ -7,7 +7,7 @@ const displayCandidate = JSON.parse(candidatePool);
 
 const AddCandidate = () => {
     //use State for chosen candidate
-    const [ candidate, setCandidate ] = useState(displayCandidate[0]);
+    const [ candidate_info, setCandidate ] = useState(displayCandidate[0]);
 
     //placeholders for w3_ids 
     const create_w3id = "FName.Lname@ibm.com";
@@ -18,7 +18,7 @@ const AddCandidate = () => {
         e.preventDefault();
         console.log("in POST");
         try {
-            const body = { create_w3id, interview_status_code, candidate, breakout_room_info };
+            const body = { create_w3id, interview_status_code, candidate_info, breakout_room_info };
             await fetch("http://localhost:8000/assignments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
@@ -46,7 +46,7 @@ const AddCandidate = () => {
             <form className="d-flex mt-3" onSubmit={onSubmitForm}>
                 <button type="button mt-5" className="btn btn-primary">Add</button>
             </form>
-            <p>{candidate.name}, {candidate.jrss}</p>
+            <p>{candidate_info.name}, {candidate_info.jrss}</p>
             </div>
         </Fragment>
     );
