@@ -1,0 +1,27 @@
+version: "3"
+services:
+  backend:
+    image: "eliseweinfurter/cic2020interns:backend"
+    links:
+      - some-postgres
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    command: sh -c 'npm start'      
+
+  some-postgres:
+    image: "postgres:9.4"
+    environment: 
+      - POSTGRES_PASSWORD=WMfT156PXxTh8Dli9Odm2wwuHlmIdsl3
+      - POSTGRES_USER=awnsfvaj
+      - POSTGRES_DB=awnsfvaj
+
+  frontend:
+    image: "eliseweinfurter/cic2020interns:frontend"
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    command: sh -c 'npm start'
