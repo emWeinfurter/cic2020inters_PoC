@@ -7,8 +7,7 @@ services:
     volumes:
       - ./backend:/backend
     ports:
-      - "8000:8000"
-    command: sh -c 'npm start'      
+      - "8000:8000"      
 
   some-postgres:
     image: "postgres:9.4"
@@ -16,6 +15,8 @@ services:
       - POSTGRES_PASSWORD=WMfT156PXxTh8Dli9Odm2wwuHlmIdsl3
       - POSTGRES_USER=awnsfvaj
       - POSTGRES_DB=awnsfvaj
+    ports: 
+      - "5432:5432"
 
   frontend:
     image: "eliseweinfurter/cic2020interns:frontend"
@@ -24,4 +25,3 @@ services:
     ports:
       - "3000:3000"
     stdin_open: true
-    command: sh -c 'npm start'
