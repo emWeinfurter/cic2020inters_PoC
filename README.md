@@ -24,3 +24,5 @@ ElephantSQL - https://www.elephantsql.com/
 
 DBeaver - https://dbeaver.io/
 
+Docker Hub - https://hub.docker.com/r/eliseweinfurter/cic2020interns
+
